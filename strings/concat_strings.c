@@ -29,7 +29,7 @@ char *return_user_input() {
 }
 
 char* concat_strings(char* string1, char* string2) {
-	char* combined_string = malloc(strlen(string1) + strlen(string2));
+	char* combined_string = malloc(strlen(string1) + strlen(string2) + 1);
 	for (int i = 0; i < strlen(string1); i++) {
 		combined_string[i] = string1[i];
 	}
