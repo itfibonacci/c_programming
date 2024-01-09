@@ -17,7 +17,7 @@ int main() {
 }
 
 char *return_user_input() {
-	printf("Please enter the first string: ");
+	printf("Please enter the string: ");
 	char* user_string = malloc(sizeof(char) * 100);
 	if (user_string == NULL) {
 		printf("Memory allocation failed!\n");
