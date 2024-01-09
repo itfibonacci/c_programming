@@ -44,5 +44,8 @@ void print_hex (char* file_path) {
 		printf("Error reading from a file.\n");
 	}
 	fclose(text_file);
+}
 
+void create_copy_file (char* oringal_path) {
+	
 }
