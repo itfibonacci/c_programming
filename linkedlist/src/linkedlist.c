@@ -51,6 +51,62 @@ Node* add_node_head (int value) {
 	return node;
 }
 
+int remove_head () {
+	if (!head) {
+		printf("Can't remove the head, since head is NULL\n");
+		return 1;
+	}
+
+	if (!head->next) {
+		free(head);
+		head = NULL;
+	} else {
+		Node *next_node = head->next;
+		free(head);
+		head = next_node;
+	}
+	printf("Removed head\n");
+	return 0;
+}
+
+int remove_tail() {
+	if (!head) {
+		printf("Can't remove the tail, since head is NULL\n");
+		return 1;
+	}
+
+	if (!head->next) {
+		free(head);
+		head = NULL;
+	} else {
+		Node *current_node = head;
+
+		while (current_node->next->next) {
+			current_node = current_node->next;
+		}
+		
+		free(current_node->next);
+		current_node->next = NULL;
+
+	}
+	printf("Removed tail\n");
+	return 0;
+}
+
+int get_size() {
+	if (!head) {
+		return 0;
+	}
+	int i = 0;
+	Node *current_node = head;
+
+	while (current_node != NULL) {
+		i ++;
+		current_node = current_node->next;
+	}
+	return i;
+}
+
 void print_list() {
 	Node *current_node = head;
 	int i = 1;
