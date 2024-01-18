@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *regexify (char *check_ip);
+char *regexify (char *ip);
 char *get_user_input();
 
 int main() {
@@ -36,12 +36,12 @@ char *get_user_input() {
 	return ip_address;
 }
 
-char *regexify (char *check_ip) {
+char *regexify (char *ip) {
 	regex_t regex;
 	int reti;
 	char msgbuf[100];
 
-	size_t max_groups = 3;
+	size_t max_groups = 5;
 	regmatch_t groups[max_groups];
 
 	// pattern for ip address
@@ -54,15 +54,17 @@ char *regexify (char *check_ip) {
 	}
 
 	// Execute regular expression
-	reti = regexec(&regex, check_ip, max_groups, groups, 0);
+	reti = regexec(&regex, ip, max_groups, groups, 0);
 	if (!reti) {
 		puts("Match!");
 		for (unsigned int g = 0; g < max_groups; g++) {
 			if (groups[g].rm_so == (size_t) - 1)
 				break;
 			
-			char sourceCopy[strlen(check_ip) + 1];
-			strcpy(sourceCopy, check_ip);
+			char ip_copy[strlen(ip) + 1];
+			strcpy(ip_copy, ip);
+			ip_copy[groups[g].rm_eo] = 0;
+			printf("Group %u: [%2llu-%2llu]: %s\n", g, groups[g].rm_so, groups[g].rm_eo, ip_copy + groups[g].rm_so);
 		}
 	}
 	else if(reti == REG_NOMATCH) {
