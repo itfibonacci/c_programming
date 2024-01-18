@@ -41,6 +41,9 @@ char *regexify (char *check_ip) {
 	int reti;
 	char msgbuf[100];
 
+	size_t max_groups = 3;
+	regmatch_t groups[max_groups];
+
 	// pattern for ip address
 	char *pattern = "^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$";
 	// Compile regular expression
@@ -51,9 +54,16 @@ char *regexify (char *check_ip) {
 	}
 
 	// Execute regular expression
-	reti = regexec(&regex, check_ip, 0, NULL, 0);
+	reti = regexec(&regex, check_ip, max_groups, groups, 0);
 	if (!reti) {
 		puts("Match!");
+		for (unsigned int g = 0; g < max_groups; g++) {
+			if (groups[g].rm_so == (size_t) - 1)
+				break;
+			
+			char sourceCopy[strlen(check_ip) + 1];
+			strcpy(sourceCopy, check_ip);
+		}
 	}
 	else if(reti == REG_NOMATCH) {
 		puts("No match!");
