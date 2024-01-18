@@ -77,5 +77,6 @@ char *regexify (char *ip) {
 	}
 	// Free compiled regex
 	regfree(&regex);
+	free(ip);
 	return 0;
 }
