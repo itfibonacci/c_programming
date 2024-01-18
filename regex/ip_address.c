@@ -26,10 +26,15 @@ char *get_user_input() {
 	fgets(ip_address, MAX_BUFFER_SIZE, stdin);
 
 	// remove the newline that fgets appends
-	size_t len = strlen(ip_address);
+	size_t input_len = strlen(ip_address);
 
-	if (len > 0 && ip_address[len - 1] == '\n') {
-		ip_address[len-1] = '\0';
+	// Clear the input buffer
+	if (input_len > 0 && ip_address[input_len - 1] == '\n') {
+		ip_address[input_len-1] = '\0';
+	}
+	else {
+		int ch;
+		while ((ch = getchar()) != '\n' && ch != EOF);
 	}
 
 	// return the text
