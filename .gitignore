@@ -4,6 +4,9 @@
 !/**/
 !*.*
 
+# Do not ignore Makefiles
+!Makefile
+
 # Prerequisites
 *.d
 
