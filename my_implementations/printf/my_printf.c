@@ -23,7 +23,9 @@ int main() {
 	my_printf("Hello char: %c buddy, another char: %c and a string: %s", 'y', 'f', "hello bud");
 	
 	// lets try printing a decimal
-	my_printf("Hello char: %i", 12);
+	my_printf("print integer: %i", 12);
+	my_printf("print integers: %i, %i, %i", 12, 123123213, 1235873418561372512);
+
 
 	//printf("Result is %s", int_to_string(123));
 	
