@@ -24,8 +24,7 @@ int main() {
 	
 	// lets try printing a decimal
 	my_printf("print integer: %i", 12);
-	my_printf("print integers: %i, %i, %i", 12, 123123213, 1235873418561372512);
-
+	my_printf("print integers: %i, %i, %i", 12, 123123213, 1235873418);
 
 	//printf("Result is %s", int_to_string(123));
 	
@@ -58,7 +57,9 @@ int my_printf(char *format, ...) {
 					break;
 				case 'i':
 				{
-					fputs(int_to_string(va_arg(argptr, int)), stdout);
+					char *num_s = int_to_string(va_arg(argptr, int));
+					fputs(num_s, stdout);
+					free(num_s);
 					break;
 				}
 				default:
@@ -86,6 +87,11 @@ char *int_to_string(int num) {
 	int digits_count = log10(num) + 1;
  	size_t size = sizeof(char) * digits_count + 1;
 	char *num_s = malloc(size);
+	if (num_s == NULL) {
+		perror("Error allocating memory");
+		return NULL;
+	}
+
 	int count;
 	
 	for (count = 0; count < digits_count; count++) {
