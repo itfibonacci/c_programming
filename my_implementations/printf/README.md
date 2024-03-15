@@ -13,7 +13,7 @@ The custom printf function will support the following format specifiers: %s, %d,
 2. My printf implementation will automatically add a newline character (\n).
 3. Return Value: function returns the number of characters printed. ( needs to account for format specifiers)
 4. The function should parse the format string for %x style arguments.
-5. The function should correctly print string (%s), decimal (%d or %i), and character (%c) arguments.
+5. The function should correctly print string (%s), integers (%i), and character (%c) arguments.
 6. The function should handle %% by printing a single %.
 
 ### Non-Functional Requirements
