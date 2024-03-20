@@ -5,7 +5,10 @@
 !*.*
 
 # Do not ignore Makefiles
-!Makefile
+!Makefile*
+
+# Ignore bin dirs
+**/bin
 
 # Prerequisites
 *.d
