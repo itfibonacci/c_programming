@@ -1,2 +1,3 @@
 blah: blah.c
-	clang blah.c -o blah
+	mkdir -p ./bin
+	clang blah.c -o bin/blah
