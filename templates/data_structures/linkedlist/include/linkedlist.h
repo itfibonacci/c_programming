@@ -18,6 +18,7 @@ typedef struct LinkedList {
 } LinkedList;
 
 LinkedList *linkedlist();
+unsigned char free_linked_list(LinkedList **ll);
 Node *get_head (LinkedList *linkedlist);
 unsigned char add(LinkedList *linkedlist, Type type, void *value);
 
