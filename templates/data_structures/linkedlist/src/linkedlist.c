@@ -3,14 +3,6 @@
 
 #include "linkedlist.h"
 
-int main() {
-	LinkedList *ll1 = linkedlist();
-	printf("The first ll's head is at: %p\n", ll1->head);
-	printf("The first ll's head is at: %p\n", get_head(ll1));
-	add(ll1, INT, 123);
-	printf("The first node's data is: %d", get_head(ll1)->data);
-}
-
 LinkedList *linkedlist() {
 	LinkedList *new_linked_list = (LinkedList *) malloc(sizeof(LinkedList));
 	
@@ -21,6 +13,25 @@ LinkedList *linkedlist() {
 	
 	new_linked_list->head = NULL;
 	return new_linked_list;
+}
+
+/* 
+Returns 0 if the method successfully has freed memory
+*/
+unsigned char free_linked_list(LinkedList **ll) {
+	// let's go one by one and free all the nodes
+	Node *current = (*ll)->head;
+	Node *next;
+	
+	while(current != NULL) {
+		next = current->next;
+		free(current);
+		current = next;
+	}
+
+	free(*ll);
+	*ll = NULL;
+	return 0;
 }
 
 /* returns null if the collection is empty */
