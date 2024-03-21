@@ -1,3 +1,6 @@
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
 typedef enum {
 	INT,
 	CHAR,
@@ -17,3 +20,5 @@ typedef struct LinkedList {
 LinkedList *linkedlist();
 Node *get_head (LinkedList *linkedlist);
 unsigned char add(LinkedList *linkedlist, Type type, void *value);
+
+#endif
