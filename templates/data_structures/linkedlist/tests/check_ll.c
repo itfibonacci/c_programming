@@ -58,7 +58,12 @@ START_TEST (test_print_linkedlist)
 	float float1 = 1232.16;
 	char char1 = 'a';
 	char *string1 = "Hello World!";
-	
+	add(ll, INT, &num1);
+	add(ll, FLOAT, &float1);
+	add(ll, CHAR, &char1);
+	add(ll, STRING, string1);
+
+	print_linkedlist(ll);
 
 	free_linked_list(&ll);
 	ck_assert(ll == NULL);
@@ -92,6 +97,7 @@ Suite *linkedlist_suite(void)
   tcase_add_test(tc_core, test_add_float);
   tcase_add_test(tc_core, test_add_char);
   tcase_add_test(tc_core, test_add_string);
+  tcase_add_test(tc_core, test_print_linkedlist);
   return suite;
 }
 
