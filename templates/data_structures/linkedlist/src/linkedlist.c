@@ -65,6 +65,55 @@ void print_linkedlist(LinkedList *ll) {
 }
 
 /*
+adds an element of Node to the tail of the list
+if head does not exist the new node will be head
+returns 0 if the add operation was successful
+*/
+unsigned char add_last(LinkedList *linkedlist, Type type, void *value) {
+	Node *new_node = (Node *) malloc(sizeof(Node));
+	
+	if (new_node == NULL) {
+		perror("Allocation of the new node failed.");
+		return 1;
+	}
+
+	new_node->type = type;
+	switch (type)
+	{
+		case INT:
+			new_node->data.int_value = *(int *)value;
+			break;
+		case FLOAT:
+			new_node->data.float_value = *(float *)value;
+			break;
+		case CHAR:
+			new_node->data.char_value = *(char *)value;
+			break;
+		case STRING:
+			new_node->data.string_value = (char *)value;
+			break;
+		default:
+			break;
+	}
+
+	new_node->next = NULL;
+
+	if (get_head(linkedlist) == NULL) {
+		linkedlist->head = new_node;
+		return 0;
+	}
+
+	Node *current = linkedlist->head;
+
+	while (current->next != NULL) {
+		current = current->next;
+	}
+
+	current->next = new_node;
+	return 0;
+}
+
+/*
 adds an element of Node to the head of the list
 if head does not exist the new node will be head
 returns 0 if the add operation was successful
