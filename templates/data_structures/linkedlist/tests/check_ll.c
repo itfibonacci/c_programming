@@ -11,7 +11,7 @@ START_TEST (test_empty_linkedlist)
 }
 END_TEST
 
-START_TEST (test_add_int)
+START_TEST (test_add_last_int)
 {
 	LinkedList *ll = linkedlist();
 	int num1 = 1232;
@@ -21,7 +21,7 @@ START_TEST (test_add_int)
 }
 END_TEST
 
-START_TEST (test_add_float)
+START_TEST (test_add_last_float)
 {
 	LinkedList *ll = linkedlist();
 	float float1 = 1232.16;
@@ -31,7 +31,7 @@ START_TEST (test_add_float)
 }
 END_TEST
 
-START_TEST (test_add_char)
+START_TEST (test_add_last_char)
 {
 	LinkedList *ll = linkedlist();
 	char char1 = 'a';
@@ -41,7 +41,7 @@ START_TEST (test_add_char)
 }
 END_TEST
 
-START_TEST (test_add_string)
+START_TEST (test_add_last_string)
 {
 	LinkedList *ll = linkedlist();
 	char *string1 = "Hello World!";
@@ -93,10 +93,10 @@ Suite *linkedlist_suite(void)
 
   tcase_add_test(tc_core, test_empty_linkedlist);
   tcase_add_test(tc_core, test_free_linkedlist);
-  tcase_add_test(tc_core, test_add_int);
-  tcase_add_test(tc_core, test_add_float);
-  tcase_add_test(tc_core, test_add_char);
-  tcase_add_test(tc_core, test_add_string);
+  tcase_add_test(tc_core, test_add_last_int);
+  tcase_add_test(tc_core, test_add_last_float);
+  tcase_add_test(tc_core, test_add_last_char);
+  tcase_add_test(tc_core, test_add_last_string);
   tcase_add_test(tc_core, test_print_linkedlist);
   return suite;
 }

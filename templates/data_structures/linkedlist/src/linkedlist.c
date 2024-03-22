@@ -46,22 +46,26 @@ void print_linkedlist(LinkedList *ll) {
 		switch (current->type)
 			{
 				case INT:
-					printf("Item: %i\n", current->data.int_value);
+					printf("%i", current->data.int_value);
 					break;
 				case FLOAT:
-					printf("Item: %f\n", current->data.float_value);
+					printf("%f", current->data.float_value);
 					break;
 				case CHAR:
-					printf("Item: %c\n", current->data.char_value);
+					printf("%c", current->data.char_value);
 					break;
 				case STRING:
-					printf("Item: %s\n", current->data.string_value);
+					printf("%s", current->data.string_value);
 					break;
 				default:
 					break;
 			}
+		if (current->next != NULL) {
+			printf(" -> ");
+		}
 		current = current->next;
 	}
+	printf("\n");
 }
 
 /*
