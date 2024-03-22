@@ -69,7 +69,7 @@ adds an element of Node to the head of the list
 if head does not exist the new node will be head
 returns 0 if the add operation was successful
 */
-unsigned char add(LinkedList *linkedlist, Type type, void *value) {
+unsigned char add_first(LinkedList *linkedlist, Type type, void *value) {
 	Node *new_node = (Node *) malloc(sizeof(Node));
 
 	if (new_node == NULL) {
@@ -80,20 +80,20 @@ unsigned char add(LinkedList *linkedlist, Type type, void *value) {
 	new_node->type = type;
 	switch (type)
 	{
-	case INT:
-		new_node->data.int_value = *(int *)value;
-		break;
-	case FLOAT:
-		new_node->data.float_value = *(float *)value;
-		break;
-	case CHAR:
-		new_node->data.char_value = *(char *)value;
-		break;
-	case STRING:
-		new_node->data.string_value = (char *)value;
-		break;
-	default:
-		break;
+		case INT:
+			new_node->data.int_value = *(int *)value;
+			break;
+		case FLOAT:
+			new_node->data.float_value = *(float *)value;
+			break;
+		case CHAR:
+			new_node->data.char_value = *(char *)value;
+			break;
+		case STRING:
+			new_node->data.string_value = (char *)value;
+			break;
+		default:
+			break;
 	}
 
 	new_node->next = linkedlist->head;

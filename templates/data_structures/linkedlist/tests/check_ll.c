@@ -15,7 +15,7 @@ START_TEST (test_add_int)
 {
 	LinkedList *ll = linkedlist();
 	int num1 = 1232;
-	add(ll, INT, &num1);
+	add_first(ll, INT, &num1);
 	ck_assert(ll->head->data.int_value == 1232);
 	free_linked_list(&ll);
 }
@@ -25,7 +25,7 @@ START_TEST (test_add_float)
 {
 	LinkedList *ll = linkedlist();
 	float float1 = 1232.16;
-	add(ll, FLOAT, &float1);
+	add_first(ll, FLOAT, &float1);
 	ck_assert(fabs(ll->head->data.float_value - 1232.16) < 0.0001 );
 	free_linked_list(&ll);
 }
@@ -35,7 +35,7 @@ START_TEST (test_add_char)
 {
 	LinkedList *ll = linkedlist();
 	char char1 = 'a';
-	add(ll, CHAR, &char1);
+	add_first(ll, CHAR, &char1);
 	ck_assert(ll->head->data.char_value == 'a');
 	free_linked_list(&ll);
 }
@@ -45,7 +45,7 @@ START_TEST (test_add_string)
 {
 	LinkedList *ll = linkedlist();
 	char *string1 = "Hello World!";
-	add(ll, STRING, string1);
+	add_first(ll, STRING, string1);
 	ck_assert(ll->head->data.string_value == string1);
 	free_linked_list(&ll);
 }
@@ -58,10 +58,10 @@ START_TEST (test_print_linkedlist)
 	float float1 = 1232.16;
 	char char1 = 'a';
 	char *string1 = "Hello World!";
-	add(ll, INT, &num1);
-	add(ll, FLOAT, &float1);
-	add(ll, CHAR, &char1);
-	add(ll, STRING, string1);
+	add_first(ll, INT, &num1);
+	add_first(ll, FLOAT, &float1);
+	add_first(ll, CHAR, &char1);
+	add_first(ll, STRING, string1);
 
 	print_linkedlist(ll);
 
