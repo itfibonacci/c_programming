@@ -73,6 +73,35 @@ START_TEST (test_print_linkedlist)
 }
 END_TEST
 
+START_TEST (test_remove_head_linkedlist)
+{
+	LinkedList *ll = linkedlist();
+	int num1 = 1232;
+	float float1 = 1232.16;
+	char char1 = 'a';
+	char *string1 = "Hello World!";
+	add_first(ll, INT, &num1);
+	add_first(ll, FLOAT, &float1);
+	add_first(ll, CHAR, &char1);
+	add_first(ll, STRING, string1);
+	add_last(ll, CHAR, &char1);
+	add_last(ll, STRING, string1);
+	add_last(ll, INT, &num1);
+	printf("Printing the list before ...\n");
+	print_linkedlist(ll);
+
+	printf("Removing the head\n");
+	remove_head(ll);
+	print_linkedlist(ll);
+	printf("Removing the head\n");
+	remove_head(ll);
+	print_linkedlist(ll);
+	printf("Removing the head\n");
+	remove_head(ll);
+	print_linkedlist(ll);
+}
+END_TEST
+
 START_TEST (test_free_linkedlist)
 {
 	LinkedList *ll = linkedlist();
@@ -100,7 +129,9 @@ Suite *linkedlist_suite(void)
   tcase_add_test(tc_core, test_add_last_float);
   tcase_add_test(tc_core, test_add_last_char);
   tcase_add_test(tc_core, test_add_last_string);
+  tcase_add_test(tc_core, test_remove_head_linkedlist);
   tcase_add_test(tc_core, test_print_linkedlist);
+
   return suite;
 }
 

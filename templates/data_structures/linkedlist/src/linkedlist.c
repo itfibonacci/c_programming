@@ -122,7 +122,7 @@ Returns and removes the head (first element) of this list.
 if head does not exist returns NULL
 the caller should be freeing the head node after calling this function
 */
-Node *remove(LinkedList *linkedlist) {
+Node *remove_head(LinkedList *linkedlist) {
 	if (linkedlist->head == NULL) {
 		return NULL;
 	}
