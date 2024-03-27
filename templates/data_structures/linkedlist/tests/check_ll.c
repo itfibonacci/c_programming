@@ -62,6 +62,9 @@ START_TEST (test_print_linkedlist)
 	add_first(ll, FLOAT, &float1);
 	add_first(ll, CHAR, &char1);
 	add_first(ll, STRING, string1);
+	add_last(ll, CHAR, &char1);
+	add_last(ll, STRING, string1);
+	add_last(ll, INT, &num1);
 
 	print_linkedlist(ll);
 
